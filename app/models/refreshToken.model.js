@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
         return refreshToken.token;
     };
     RefreshToken.verifyExpiration = (token) => {
-        return token.expiryDate.getTime() < newDate().getTime();
+        return token.expiryDate.getTime() < new Date().getTime();
     };
     return RefreshToken;
 };
