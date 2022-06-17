@@ -13,7 +13,8 @@ db.sequelize.sync({ force: true }).then(() => {
     console.log("Drop and Resync DB");
     initial();
 });
-
+// all environments
+// app.set('port', process.env.PORT || 3030); // 포트 설정
 app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
@@ -29,8 +30,9 @@ require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
 
 const PORT = process.env.PORT || 3030;
+// const PORT = app.get('port'); // get 포트
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log("Express server is listening on port : " + app.get("port"));
 });
 
 const initial = () => {
